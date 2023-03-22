@@ -19,4 +19,5 @@ int main(void)
 		a = b;
 		b = next;
 	}
+	return (0);
 }
