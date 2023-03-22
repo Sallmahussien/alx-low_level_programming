@@ -7,7 +7,8 @@
  */
 int main(void)
 {
-	unsigned long a = 0, b = 1, fibsum, tot_sum;
+	unsigned long a = 0, b = 1, fibsum;
+	float tot_sum;
 
 	while (1)
 	{
@@ -19,6 +20,6 @@ int main(void)
 		a = b;
 		b = fibsum;
 	}
-	printf("%lu\n", tot_sum);
+	printf("%0.f\n", tot_sum);
 	return (0);
 }
