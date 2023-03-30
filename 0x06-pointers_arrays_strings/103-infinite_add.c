@@ -20,7 +20,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		len = size_n1;
 	else
 		len = size_n2;
-	r[len] = '\0';
 	if (len + 1 >= size_r)
 		return (0);
 	for (i = len - 1; i >= 0; i--)
@@ -43,5 +42,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[i + 1] = (sum % 10) + '0';
 	}
 	r[0] = rem + '0';
+	if (rem == 1)
+		r[len + 1] = '\0';
+	else
+		r[len] = '\0';
 	return (r);
 }
