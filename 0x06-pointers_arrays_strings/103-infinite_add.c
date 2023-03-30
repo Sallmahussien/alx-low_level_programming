@@ -43,7 +43,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[i + 1] = (sum % 10) + '0';
 	}
 	r[0] = rem + '0';
-	while (len++ < size_r)
-		r[len + 1] = '\0';
 	return (r);
 }
