@@ -19,7 +19,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	len = (size_n1 > size_n2) ? size_n1 : size_n2;
 	if (len + 1 > size_r)
 		return (0);
-	r[len] = '\0';
 	for (i = len - 1; i >= 0; i--)
 	{
 		size_n1--;
@@ -39,5 +38,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			r[len + 1] = r[len];
 		r[0] = rem + '0';
 	}
+	else
+		r[len] = '\0';
 	return (r);
 }
