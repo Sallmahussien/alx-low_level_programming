@@ -3,7 +3,7 @@
 int _strlen_recursion(char *s);
 int _plaindrome(char *s, int len, int index);
 
-/*
+/**
  *  _strlen_recursion -  returns the length of a string.
  *  @s: string.
  *  Return: string length.
