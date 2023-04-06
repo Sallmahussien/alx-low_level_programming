@@ -1,21 +1,6 @@
 #include "main.h"
 
-int _strlen(char *s);
 int _plaindrome(char *s, int len, int index);
-
-/**
- * _strlen - calculate length of a string
- * @s: input string.
- * Return: length of string.
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (s[len])
-		len++;
-	return (len);
-}
 
 /**
  * _plaindrome - checks plaindrome string.
@@ -42,7 +27,7 @@ int _plaindrome(char *s, int len, int index)
  */
 int is_palindrome(char *s)
 {
-	int length = _strlen(s);
+	int length = _strlen_recursion(s);
 
 	if (!*s)
 		return (1);
