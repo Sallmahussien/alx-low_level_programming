@@ -2,7 +2,7 @@
 int divisble(int n, int i);
 
 /**
- * divisible - checks if number is divisble or not.
+ * divisble - checks if number is divisble or not.
  * @n: number.
  * @i: number that ranges from 0 to n/2.
  * Return: 0 if n is divisble, 1 if n is not divisble.
