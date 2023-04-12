@@ -8,7 +8,7 @@
 char *argstostr(int ac, char **av)
 {
 	char *temp;
-	int byte, arg, i = 0, size = 0;
+	int byte, arg, i = 0, size = ac;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
