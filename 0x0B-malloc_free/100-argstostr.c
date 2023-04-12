@@ -29,5 +29,6 @@ char *argstostr(int ac, char **av)
 			temp[i++] = av[arg][byte];
 		temp[i++] = '\n';
 	}
+	temp[size] = '\0';
 	return (temp);
 }
