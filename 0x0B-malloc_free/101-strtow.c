@@ -46,7 +46,7 @@ char **strtow(char *str)
 			wcount++;
 			i += wlen;
 		}
-		else 
+		else
 			i++;
 	}
 	return (strings);
