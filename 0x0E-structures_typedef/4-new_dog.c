@@ -18,7 +18,7 @@ int _strlen(char *str)
 }
 
 /**
- * _strcpy: copies a string from source to destination.
+ * _strcpy - copies a string from source to destination.
  * @dest: destination.
  * @src: source.
  * Return: pointer to destination
