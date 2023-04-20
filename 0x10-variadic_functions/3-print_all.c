@@ -11,9 +11,7 @@ void print_string(va_list arg);
  */
 void print_char(va_list arg)
 {
-	char c = va_arg(arg, int);
-
-	printf("%c", c);
+	printf("%c", va_arg(arg, int));
 }
 
 /**
@@ -22,9 +20,7 @@ void print_char(va_list arg)
  */
 void print_int(va_list arg)
 {
-	int i = va_arg(arg, int);
-
-	printf("%d", i);
+	printf("%d", va_arg(arg, int));
 }
 
 /**
@@ -33,9 +29,7 @@ void print_int(va_list arg)
  */
 void print_float(va_list arg)
 {
-	float f = va_arg(arg, double);
-
-	printf("%f", f);
+	printf("%f", va_arg(arg, double));
 }
 
 /**
@@ -59,35 +53,31 @@ void print_string(va_list arg)
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int i = 0, j = 0;
-	char *separator = "";
-	printer_t funcs[] = {
+	printer_t func[] = {
 		{"c", print_char},
 		{"i", print_int},
 		{"f", print_float},
 		{"s", print_string}
 	};
+	char *separator = "";
+	int i = 0, j = 0;
 
 	va_start(args, format);
-
-	while (format && (*(format + i)))
+	while (format && format[i])
 	{
-		j = 0;
-
-		while (j < 4 && (*(format + i) != *(funcs[j].symbol)))
-			j++;
-
-		if (j < 4)
+		while (j < 4)
 		{
-			printf("%s", separator);
-			funcs[j].print(args);
-			separator = ", ";
+			if (*func[j].symbol == format[i])
+			{
+				printf("%s", separator);
+				func[j].print(args);
+				separator = ", ";
+			}
+			j++;
 		}
-
+		j = 0;
 		i++;
 	}
-
 	printf("\n");
-
 	va_end(args);
 }
