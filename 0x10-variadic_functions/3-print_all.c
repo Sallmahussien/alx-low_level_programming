@@ -1,83 +1,82 @@
 #include "variadic_functions.h"
 
-void print_char(va_list arg);
-void print_int(va_list arg);
-void print_float(va_list arg);
-void print_string(va_list arg);
-
 /**
- * print_char - print a character.
- * @arg: argument list pointed to character to be printed.
+ * print_char - Prints a char
+ * @ap: Argument pointer
  */
-void print_char(va_list arg)
+void print_char(va_list ap)
 {
-	printf("%c", va_arg(arg, int));
+	printf("%c", va_arg(ap, int));
 }
 
 /**
- * print_int - print integer
- * @arg: argument list pointed to integer to be printed
+ * print_integer - Prints an integer
+ * @ap: Argument pointer
  */
-void print_int(va_list arg)
+void print_integer(va_list ap)
 {
-	printf("%d", va_arg(arg, int));
+	printf("%d", va_arg(ap, int));
 }
 
 /**
- * print_float - print float
- * @arg: argument list pointed to float to be printed
+ * print_float - Prints a float
+ * @ap: Argument pointer
  */
-void print_float(va_list arg)
+void print_float(va_list ap)
 {
-	printf("%f", va_arg(arg, double));
+	printf("%f", va_arg(ap, double));
 }
 
 /**
- * print_string - print string.
- * @arg: argument list pointed to string
+ * print_string - Prints a string
+ * @ap: Argument pointer
  */
-void print_string(va_list arg)
+void print_string(va_list ap)
 {
-	char *str = va_arg(arg, char *);
+	char *s = va_arg(ap, char *);
 
-	if (str == NULL)
+	if (!s)
+	{
 		printf("(nil)");
-	else
-		printf("%s", str);
+		return;
+	}
+		printf("%s", s);
 }
 
 /**
- * print_all - prints anything.
- * @format: A string of characters representing the argument types.
+ * print_all - Prints anything
+ * @format: Types of arguments passed to function
  */
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	printer_t func[] = {
+	print_type types[] = {
 		{"c", print_char},
-		{"i", print_int},
+		{"i", print_integer},
 		{"f", print_float},
-		{"s", print_string}
+		{"s", print_string},
+		{NULL, NULL}
 	};
+	va_list ap;
 	char *separator = "";
-	int i = 0, j = 0;
+	int i = 0;
+	int j = 0;
 
-	va_start(args, format);
+	va_start(ap, format);
 	while (format && format[i])
 	{
-		while (j < 4)
+		while (types[j].type)
 		{
-			if (*func[j].symbol == format[i])
+			if (*types[j].type == format[i])
 			{
 				printf("%s", separator);
-				func[j].print(args);
+				types[j].f(ap);
 				separator = ", ";
 			}
-			j++;
+			++j;
 		}
 		j = 0;
-		i++;
+		++i;
 	}
 	printf("\n");
-	va_end(args);
+	va_end(ap);
 }
