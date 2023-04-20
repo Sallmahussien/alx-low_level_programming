@@ -6,15 +6,16 @@
 #include <stdarg.h>
 
 /**
- * struct print - print
- * @type: The operator
- * @f: The function associated
+ * struct printer - print
+ * @symbol: The operator
+ * @print: The function associated
  */
-typedef struct print
+typedef struct printer
 {
-	char *type;
-	void (*f)(va_list ap);
-} print_type;
+	char *symbol;
+	void (*print)(va_list arg);
+
+} printer_t;
 
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);
