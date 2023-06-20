@@ -1,15 +1,7 @@
-#include <stdlib.h>
-#include <time.h>
-
-int sequence[] = {9, 8, 10, 24, 75, 9};
-static int count = 0;
-
 int rand()
 {
-  int num;
+  int sequence[] = {9, 8, 10, 24, 75, 9};
+  static int count = 0;
 
-  num = sequence[count];
-  count++;
-
-  return(num);
+  return(sequence[count++]);
 }
