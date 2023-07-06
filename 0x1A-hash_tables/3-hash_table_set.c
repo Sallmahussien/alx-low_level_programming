@@ -12,35 +12,57 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *new_node, *current_node;
 	unsigned long int idx;
 
-	if (strlen(key) == 0)
+	if (!ht || !key || !value || *key == '\0')
 		return (FAIL);
 
 	idx = key_index((const unsigned char *) key, ht->size);
+	current_node = ht->array[idx];
 
-	if (!ht->array[idx])
+	while (current_node)
 	{
-		current_node = ht->array[idx];
-		while (current_node)
+		if (!strcmp(key, current_node->key))
 		{
-			if (!strcmp(key, current_node->key))
-			{
-				current_node->value = strdup(value);
-				return (SUCCESS);
-			}
-			current_node = current_node->next;
+			free(current_node->value);
+			current_node->value = strdup(value);
+			return (SUCCESS);
 		}
+		current_node = current_node->next;
 	}
 
-	new_node = malloc(sizeof(hash_node_t));
-	if (new_node == NULL)
+	new_node = create_new_node(key, value);
+	if (!new_node)
 		return (FAIL);
 
-	new_node->key = strdup(key);
-	new_node->value = strdup(value);
-
+	if (!current_node)
+	{
+		ht->array[idx] = new_node;
+		return (SUCCESS);
+	}
 
 	new_node->next = ht->array[idx];
 	ht->array[idx] = new_node;
 
 	return (SUCCESS);
+}
+
+
+/**
+ * create_new_node - creates a new node of the linked list
+ * @key: is the key.
+ * @value: is the value associated with the key.
+ * Return: pointer to new node or NULL if it fails
+*/
+hash_node_t *create_new_node(const char *key, const char *value)
+{
+	hash_node_t *new_node;
+
+	new_node = malloc(sizeof(hash_node_t));
+	if (new_node == NULL)
+		return (NULL);
+
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
+	new_node->next = NULL;
+
+	return (new_node);
 }
