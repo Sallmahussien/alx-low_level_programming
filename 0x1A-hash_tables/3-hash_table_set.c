@@ -18,17 +18,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	idx = key_index((const unsigned char *) key, ht->size);
 	current_node = ht->array[idx];
 
-	while (current_node)
-	{
-		if (!strcmp(key, current_node->key))
-		{
-			free(current_node->value);
-			current_node->value = strdup(value);
-			return (SUCCESS);
-		}
-		current_node = current_node->next;
-	}
-
 	new_node = create_new_node(key, value);
 	if (!new_node)
 		return (FAIL);
@@ -37,6 +26,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		ht->array[idx] = new_node;
 		return (SUCCESS);
+	}
+
+	while (current_node)
+	{
+		if (!strcmp(key, current_node->key))
+		{
+			free(current_node->value);
+			current_node->value = strdup(value);
+			free_new_node(new_node);
+			return (SUCCESS);
+		}
+		current_node = current_node->next;
 	}
 
 	new_node->next = ht->array[idx];
@@ -65,4 +66,15 @@ hash_node_t *create_new_node(const char *key, const char *value)
 	new_node->next = NULL;
 
 	return (new_node);
+}
+
+/**
+ * free_new_node - free a new node for the linked list
+ * @new_node: new node of the linked list
+*/
+void free_new_node(hash_node_t *new_node)
+{
+	free(new_node->key);
+	free(new_node->value);
+	free(new_node);
 }
