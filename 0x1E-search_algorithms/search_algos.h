@@ -23,4 +23,9 @@ int interpolation_search(int *array, size_t size, int value);
 int advanced_binary(int *array, size_t size, int value);
 int binary_search_recursive(int *array, int low, int high, int value);
 
+/** Exponential search algorithm*/
+int exponential_search(int *array, size_t size, int value);
+int min(int first_num, int second_num);
+int binary_search_for_exponenial(int *array, int low, int high, int value);
+
 #endif
