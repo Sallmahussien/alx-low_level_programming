@@ -7,38 +7,29 @@
  * @value: value to search for
  * Return: first index where value is located,
  *				 -1 if the value doesn't presented on the array
-*/
+ */
 int jump_search(int *array, size_t size, int value)
 {
-	int m = sqrt(size);
-	int jump = 0;
+	int step = sqrt((int) size);
+	int prev = 0;
 
 	if (!array)
 		return (-1);
 
-	if (array[jump] == value)
-		return (linear_search_for_jump(array, jump, m, value));
-
-	while (jump < (int)size)
+	while (array[prev] < value)
 	{
-		if (value <= array[jump])
+		printf("Value checked array[%d] = [%d]\n", prev, array[prev]);
+		prev += step;
+		if (prev >= (int) size)
 		{
-			printf("Value found between indexes [%d] and [%d]\n", jump - m, jump);
-			return (linear_search_for_jump(array, jump - m, jump, value));
-		}
-		else if ((jump + m) > (int)size - 1)
-		{
-			printf("Value found between indexes [%d] and [%d]\n", jump, jump + m);
-			return (linear_search_for_jump(array, jump, size - 1, value));
-		}
-		else
-		{
-			printf("Value checked array[%d] = [%d]\n", jump, array[jump]);
-			jump += m;
+			printf("Value found between indexes [%d] and [%d]\n", prev - step, prev);
+			return (linear_search_for_jump(array, prev - step, size - 1, value));
 		}
 	}
 
-	return (-1);
+	printf("Value found between indexes [%d] and [%d]\n", prev - step, prev);
+
+	return (linear_search_for_jump(array, prev - step, prev, value));
 }
 
 /**
