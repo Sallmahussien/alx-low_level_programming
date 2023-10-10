@@ -12,6 +12,9 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int low = 0, high = (int)size - 1;
 
+	if (!array)
+		return (-1);
+
 	return (binary_search_recursive(array, low, high, value));
 }
 
