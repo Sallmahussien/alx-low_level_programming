@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /** Linear seach algorithm*/
 int linear_search(int *array, size_t size, int value);
@@ -10,5 +11,9 @@ int linear_search(int *array, size_t size, int value);
 /** Binary search algorithm*/
 int binary_search(int *array, size_t size, int value);
 void print_array(int *array, int start, int end);
+
+/** Jump search algorithm*/
+int jump_search(int *array, size_t size, int value);
+int linear_search_for_jump(int *array, size_t start, size_t end, int value);
 
 #endif
