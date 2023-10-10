@@ -16,6 +16,9 @@ int jump_search(int *array, size_t size, int value)
 	if (!array)
 		return (-1);
 
+	if (array[jump] == value)
+		return (linear_search_for_jump(array, jump, m, value));
+
 	while (jump < (int)size)
 	{
 		if (value <= array[jump])
