@@ -19,4 +19,8 @@ int linear_search_for_jump(int *array, size_t start, size_t end, int value);
 /** Interpolation search algorithm*/
 int interpolation_search(int *array, size_t size, int value);
 
+/** Recursive binary search*/
+int advanced_binary(int *array, size_t size, int value);
+int binary_search_recursive(int *array, int low, int high, int value);
+
 #endif
