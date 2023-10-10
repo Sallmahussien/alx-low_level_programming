@@ -42,7 +42,7 @@ int binary_search_recursive(int *array, int low, int high, int value)
 		return (middle);
 
 	if (array[middle] >= value)
-		return (binary_search_recursive(array, low, middle - 1, value));
+		return (binary_search_recursive(array, low, middle, value));
 	else
 		return (binary_search_recursive(array, middle + 1, high, value));
 
