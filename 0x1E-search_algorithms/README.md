@@ -84,7 +84,7 @@ Function Prototypes
 | `103-exponential.c`     | `int exponential_search(int *array, size_t size, int value);`   |
 | `104-advanced_binary.c` | `int advanced_binary(int *array, size_t size, int value);`      |
 
-## Tasks :page_with_curl:
+## Tasks
 
 * **0. Linear search**
   * [0-linear.c](./0-linear.c): C function that searches for a value in an array
