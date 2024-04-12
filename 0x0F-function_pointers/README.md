@@ -17,11 +17,11 @@
 * What does a function pointer exactly hold
 * Where does a function pointer point to in the virtual memory
 
-## Tests :heavy_check_mark:
+## Tests
 
 * [tests](./tests): Folder of test files.
 
-## Header Files :file_folder:
+## Header Files
 
 * [function_pointers.h](./function_pointers.h): Header file containing prototypes
 for all functions written for programs 0-2 of the project.
