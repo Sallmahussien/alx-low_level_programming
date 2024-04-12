@@ -29,8 +29,7 @@
 
 ## Tasks
 
-| Task | File |
-| ---- | ---- |
+
 * **0. Multiple mains**
   * [0-main.c](./0-main.c): Tests `positive_or_negative()` from [0x01. C - Variables, if, else, while - Task #0 ](../0x01-variables_if_else_while/0-positive_or_negative.c)
 
