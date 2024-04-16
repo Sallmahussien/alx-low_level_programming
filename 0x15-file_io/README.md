@@ -20,11 +20,10 @@
 * What is a system call
 * What is the difference between a function and a system call
 
-## Tests :heavy_check_mark:
+## Tests
 
 * [tests](./tests): Folder of test files.
-## Header File :file_folder:
-
+## Header File
 * [main.h](./main.h): Header file containing prototypes for all functions
 written in the project.
 
