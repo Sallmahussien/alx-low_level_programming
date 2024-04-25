@@ -21,6 +21,7 @@
 * **0. A library is not a luxury but one of the necessities of life**
   * [libdynamic.so](./libdynamic.so): C dynamic library containing all the functions
   listed below:
+
   | File | Prototype |
   |------|-----------|
   | [_putchar.c](./_putchar.c) | `int _putchar(char c);` |
